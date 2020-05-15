@@ -1,0 +1,11 @@
+.top_bar {
+    background-color: #ff6666;
+}
+
+.sidebar {
+    border: groove;
+    height: 700px;
+    margin-left: 10px;
+    width: 100%;
+    margin-top: 10px;
+}

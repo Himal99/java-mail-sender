@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/mystyle.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Starting of my navbar -->
+        <!--  -->
+        <!--  -->
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown
+              </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Disabled</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <br>
+    <form action="" id="mail">
+        <div class="row">
+            <div class="col-md-6">
+                <input type="text" class="form-control" id="subject" placeholder="Your Subjet" required>
+
+            </div>
+            <div class="col-md-6">
+                <input type="email" class="form-control" id="to" placeholder="Send to" required>
+
+            </div>
+            <br>
+            <br>
+            <div class="col-md-12">
+                <textarea id="message" class="form-control" placeholder="Your message" required></textarea>
+            </div>
+
+
+
+        </div>
+        <br>
+        <br>
+        <div class="text-center">
+            <button id="send" class="btn btn-success ">Send</button>
+        </div>
+    </form>
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+</body>
+
+</html>
+
+<script>
+    $(document).ready(function() {
+        $('#mail').on('click', '#send', function() {
+            var subject = $('#subject').val();
+            var sendTo = $('#to').val();
+            var message = $('#message').val();
+
+            $.get('/mail/', {
+                'mail': message,
+                'sendto': sendTo,
+                'subject': subject
+            }, function(data) {
+                if (data === 'success') {
+                    alert('message send success')
+                } else {
+                    alert('email address wrong');
+                }
+            })
+
+
+        })
+    })
+</script>
